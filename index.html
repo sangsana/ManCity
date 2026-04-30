@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pep's Man City Dynasty | Trophy Cabinet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sky-blue: #6CABDD;
+            --dark-blue: #1C2C5B;
+            --gold: #FFD700;
+            --silver: #C0C0C0;
+            --bg-dark: #0A0E1A;
+            --bg-darker: #050810;
+            --text-light: #E8F1F8;
+            --accent-cyan: #00D9FF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-darker);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(108, 171, 221, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(28, 44, 91, 0.15) 0%, transparent 50%),
+                linear-gradient(180deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
+            z-index: -1;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(108, 171, 221, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .manager-badge {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--sky-blue), var(--dark-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: white;
+            box-shadow: 0 0 40px rgba(108, 171, 221, 0.5);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 40px rgba(108, 171, 221, 0.5); }
+            50% { transform: scale(1.05); box-shadow: 0 0 60px rgba(108, 171, 221, 0.8); }
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            letter-spacing: 0.1em;
+            line-height: 1;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--sky-blue), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideDown 1s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .subtitle {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            color: var(--sky-blue);
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(108, 171, 221, 0.1), rgba(28, 44, 91, 0.1));
+            border: 2px solid rgba(108, 171, 221, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        .stat-card:nth-child(1) { animation-delay: 0.1s; }
+        .stat-card:nth-child(2) { animation-delay: 0.2s; }
+        .stat-card:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--sky-blue);
+            box-shadow: 0 10px 40px rgba(108, 171, 221, 0.3);
+        }
+
+        .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .stat-label {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--sky-blue);
+        }
+
+        /* Trophy Section */
+        .trophies-section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            letter-spacing: 0.1em;
+            color: var(--sky-blue);
+        }
+
+        .trophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .trophy-card {
+            background: linear-gradient(135deg, rgba(28, 44, 91, 0.3), rgba(108, 171, 221, 0.1));
+            border: 2px solid rgba(108, 171, 221, 0.2);
+            border-radius: 25px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .trophy-card.visible {
+            animation: revealTrophy 0.8s ease-out forwards;
+        }
+
+        @keyframes revealTrophy {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .trophy-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .trophy-card:hover::before {
+            opacity: 1;
+        }
+
+        .trophy-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: var(--gold);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.2);
+        }
+
+        .trophy-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            text-align: center;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+        }
+
+        .trophy-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--gold);
+            text-align: center;
+        }
+
+        .trophy-count {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: var(--accent-cyan);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .trophy-years {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-align: center;
+            line-height: 1.8;
+            opacity: 0.8;
+        }
+
+        .trophy-year-badge {
+            display: inline-block;
+            background: rgba(108, 171, 221, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            margin: 0.2rem;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .timeline-item.visible {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .timeline-year {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: var(--gold);
+            min-width: 150px;
+            text-align: right;
+            line-height: 1;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: linear-gradient(135deg, rgba(108, 171, 221, 0.1), rgba(28, 44, 91, 0.1));
+            border-left: 4px solid var(--sky-blue);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .timeline-trophies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .timeline-trophy {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            color: var(--gold);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            font-size: 0.9rem;
+            color: rgba(232, 241, 248, 0.5);
+            border-top: 1px solid rgba(108, 171, 221, 0.1);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-20px); }
+            60% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            stroke: var(--sky-blue);
+        }
+
+        /* Players Section */
+        .players-section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .player-card {
+            background: linear-gradient(135deg, rgba(28, 44, 91, 0.4), rgba(108, 171, 221, 0.2));
+            border: 2px solid rgba(108, 171, 221, 0.3);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .player-card.visible {
+            animation: zoomIn 0.6s ease-out forwards;
+        }
+
+        @keyframes zoomIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .player-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            border-color: var(--gold);
+            box-shadow: 0 20px 50px rgba(108, 171, 221, 0.4);
+        }
+
+        .player-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            object-position: top;
+            transition: transform 0.4s ease;
+        }
+
+        .player-card:hover .player-image {
+            transform: scale(1.1);
+        }
+
+        .player-info {
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(10, 14, 26, 0.95), transparent);
+            position: relative;
+        }
+
+        .player-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--gold);
+            letter-spacing: 0.05em;
+            margin-bottom: 0.3rem;
+        }
+
+        .player-role {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            color: var(--sky-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .player-achievement {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .manager-showcase {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(108, 171, 221, 0.1), rgba(28, 44, 91, 0.2));
+            border-radius: 30px;
+            border: 2px solid rgba(108, 171, 221, 0.2);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .manager-showcase.visible {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .manager-image-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .manager-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .manager-content {
+            padding: 2rem;
+        }
+
+        .manager-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .manager-subtitle {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            color: var(--sky-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+        }
+
+        .manager-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .manager-stat {
+            background: rgba(108, 171, 221, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(108, 171, 221, 0.2);
+        }
+
+        .manager-stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--accent-cyan);
+            line-height: 1;
+        }
+
+        .manager-stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline-item {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .timeline-year {
+                text-align: left;
+                min-width: auto;
+            }
+
+            .trophy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .players-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .manager-showcase {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .manager-image {
+                height: 400px;
+            }
+        }
+
+        /* Parallax scroll effect */
+        .parallax {
+            transition: transform 0.1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="manager-badge">PEP</div>
+            <h1>THE TROPHY MACHINE</h1>
+            <p class="subtitle">MANCHESTER CITY'S GOLDEN ERA</p>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">18</div>
+                    <div class="stat-label">Total Trophies</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Years at City</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2023</div>
+                    <div class="stat-label">Treble Winners</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Trophy Cabinet -->
+    <section class="trophies-section">
+        <h2 class="section-title">Trophy Cabinet</h2>
+        
+        <div class="trophy-grid">
+            <div class="trophy-card" data-trophy>
+                <div class="trophy-icon">🏆</div>
+                <h3 class="trophy-name">Premier League</h3>
+                <div class="trophy-count">6×</div>
+                <div class="trophy-years">
+                    <span class="trophy-year-badge">2017-18</span>
+                    <span class="trophy-year-badge">2018-19</span>
+                    <span class="trophy-year-badge">2020-21</span>
+                    <span class="trophy-year-badge">2021-22</span>
+                    <span class="trophy-year-badge">2022-23</span>
+                    <span class="trophy-year-badge">2023-24</span>
+                </div>
+            </div>
+
+            <div class="trophy-card" data-trophy>
+                <div class="trophy-icon">🏆</div>
+                <h3 class="trophy-name">EFL Cup</h3>
+                <div class="trophy-count">4×</div>
+                <div class="trophy-years">
+                    <span class="trophy-year-badge">2017-18</span>
+                    <span class="trophy-year-badge">2018-19</span>
+                    <span class="trophy-year-badge">2019-20</span>
+                    <span class="trophy-year-badge">2020-21</span>
+                </div>
+            </div>
+
+            <div class="trophy-card" data-trophy>
+                <div class="trophy-icon">⭐</div>
+                <h3 class="trophy-name">UEFA Champions League</h3>
+                <div class="trophy-count">1×</div>
+                <div class="trophy-years">
+                    <span class="trophy-year-badge">2022-23</span>
+                </div>
+            </div>
+
+            <div class="trophy-card" data-trophy>
+                <div class="trophy-icon">🏆</div>
+                <h3 class="trophy-name">FA Cup</h3>
+                <div class="trophy-count">2×</div>
+                <div class="trophy-years">
+                    <span class="trophy-year-badge">2018-19</span>
+                    <span class="trophy-year-badge">2022-23</span>
+                </div>
+            </div>
+
+            <div class="trophy-card" data-trophy>
+                <div class="trophy-icon">🛡️</div>
+                <h3 class="trophy-name">Community Shield</h3>
+                <div class="trophy-count">3×</div>
+                <div class="trophy-years">
+                    <span class="trophy-year-badge">2018</span>
+                    <span class="trophy-year-badge">2019</span>
+                    <span class="trophy-year-badge">2024</span>
+                </div>
+            </div>
+
+            <div class="trophy-card" data-trophy>
+                <div class="trophy-icon">🌍</div>
+                <h3 class="trophy-name">FIFA Club World Cup</h3>
+                <div class="trophy-count">1×</div>
+                <div class="trophy-years">
+                    <span class="trophy-year-badge">2023</span>
+                </div>
+            </div>
+
+            <div class="trophy-card" data-trophy>
+                <div class="trophy-icon">⚽</div>
+                <h3 class="trophy-name">UEFA Super Cup</h3>
+                <div class="trophy-count">1×</div>
+                <div class="trophy-years">
+                    <span class="trophy-year-badge">2023</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manager Showcase -->
+    <section class="trophies-section">
+        <h2 class="section-title">The Mastermind</h2>
+        
+        <div class="manager-showcase" data-manager>
+            <div class="manager-image-container">
+                <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&h=1000&fit=crop&q=80" 
+                     alt="Pep Guardiola" 
+                     class="manager-image"
+                     onerror="this.src='https://via.placeholder.com/800x1000/1C2C5B/6CABDD?text=PEP+GUARDIOLA'">
+            </div>
+            <div class="manager-content">
+                <h3 class="manager-title">PEP GUARDIOLA</h3>
+                <p class="manager-subtitle">Manager • 2016 - Present</p>
+                <div class="manager-stats">
+                    <div class="manager-stat">
+                        <div class="manager-stat-number">74%</div>
+                        <div class="manager-stat-label">Win Rate</div>
+                    </div>
+                    <div class="manager-stat">
+                        <div class="manager-stat-number">500+</div>
+                        <div class="manager-stat-label">Matches</div>
+                    </div>
+                    <div class="manager-stat">
+                        <div class="manager-stat-number">18</div>
+                        <div class="manager-stat-label">Trophies Won</div>
+                    </div>
+                    <div class="manager-stat">
+                        <div class="manager-stat-number">1st</div>
+                        <div class="manager-stat-label">UCL Title (2023)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Players Section -->
+    <section class="players-section">
+        <h2 class="section-title">Legendary Players</h2>
+        
+        <div class="players-grid">
+            <div class="player-card" data-player>
+                <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&h=800&fit=crop&q=80" 
+                     alt="Kevin De Bruyne" 
+                     class="player-image"
+                     onerror="this.src='https://via.placeholder.com/600x800/1C2C5B/6CABDD?text=KEVIN+DE+BRUYNE'">
+                <div class="player-info">
+                    <h3 class="player-name">KEVIN DE BRUYNE</h3>
+                    <p class="player-role">Midfielder</p>
+                    <p class="player-achievement">6× Premier League Champion • Playmaker Extraordinaire</p>
+                </div>
+            </div>
+
+            <div class="player-card" data-player>
+                <img src="https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?w=600&h=800&fit=crop&q=80" 
+                     alt="Erling Haaland" 
+                     class="player-image"
+                     onerror="this.src='https://via.placeholder.com/600x800/1C2C5B/6CABDD?text=ERLING+HAALAND'">
+                <div class="player-info">
+                    <h3 class="player-name">ERLING HAALAND</h3>
+                    <p class="player-role">Striker</p>
+                    <p class="player-achievement">Treble Winner • 52 Goals in Debut Season</p>
+                </div>
+            </div>
+
+            <div class="player-card" data-player>
+                <img src="https://images.unsplash.com/photo-1606925797300-0b35e9d1794e?w=600&h=800&fit=crop&q=80" 
+                     alt="Rodri" 
+                     class="player-image"
+                     onerror="this.src='https://via.placeholder.com/600x800/1C2C5B/6CABDD?text=RODRI'">
+                <div class="player-info">
+                    <h3 class="player-name">RODRI</h3>
+                    <p class="player-role">Defensive Midfielder</p>
+                    <p class="player-achievement">2024 Ballon d'Or Winner • The Anchor</p>
+                </div>
+            </div>
+
+            <div class="player-card" data-player>
+                <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=600&h=800&fit=crop&q=80" 
+                     alt="Sergio Aguero" 
+                     class="player-image"
+                     onerror="this.src='https://via.placeholder.com/600x800/1C2C5B/6CABDD?text=SERGIO+AGUERO'">
+                <div class="player-info">
+                    <h3 class="player-name">SERGIO AGÜERO</h3>
+                    <p class="player-role">Striker • Legend</p>
+                    <p class="player-achievement">Club's All-Time Leading Scorer • 93:20 Hero</p>
+                </div>
+            </div>
+
+            <div class="player-card" data-player>
+                <img src="https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=600&h=800&fit=crop&q=80" 
+                     alt="Phil Foden" 
+                     class="player-image"
+                     onerror="this.src='https://via.placeholder.com/600x800/1C2C5B/6CABDD?text=PHIL+FODEN'">
+                <div class="player-info">
+                    <h3 class="player-name">PHIL FODEN</h3>
+                    <p class="player-role">Midfielder / Winger</p>
+                    <p class="player-achievement">Academy Graduate • PFA Player of the Year 2024</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline">
+        <h2 class="section-title">Season by Season</h2>
+        
+        <div class="timeline-item" data-timeline>
+            <div class="timeline-year">2023-24</div>
+            <div class="timeline-content">
+                <div class="timeline-trophies">
+                    <span class="timeline-trophy">🏆 Premier League</span>
+                    <span class="timeline-trophy">🛡️ Community Shield</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item" data-timeline>
+            <div class="timeline-year">2022-23</div>
+            <div class="timeline-content">
+                <div class="timeline-trophies">
+                    <span class="timeline-trophy">⭐ UEFA Champions League</span>
+                    <span class="timeline-trophy">🏆 Premier League</span>
+                    <span class="timeline-trophy">🏆 FA Cup</span>
+                    <span class="timeline-trophy">🌍 FIFA Club World Cup</span>
+                    <span class="timeline-trophy">⚽ UEFA Super Cup</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item" data-timeline>
+            <div class="timeline-year">2021-22</div>
+            <div class="timeline-content">
+                <div class="timeline-trophies">
+                    <span class="timeline-trophy">🏆 Premier League</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item" data-timeline>
+            <div class="timeline-year">2020-21</div>
+            <div class="timeline-content">
+                <div class="timeline-trophies">
+                    <span class="timeline-trophy">🏆 Premier League</span>
+                    <span class="timeline-trophy">🏆 EFL Cup</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item" data-timeline>
+            <div class="timeline-year">2019-20</div>
+            <div class="timeline-content">
+                <div class="timeline-trophies">
+                    <span class="timeline-trophy">🏆 EFL Cup</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item" data-timeline>
+            <div class="timeline-year">2018-19</div>
+            <div class="timeline-content">
+                <div class="timeline-trophies">
+                    <span class="timeline-trophy">🏆 Premier League</span>
+                    <span class="timeline-trophy">🏆 FA Cup</span>
+                    <span class="timeline-trophy">🏆 EFL Cup</span>
+                    <span class="timeline-trophy">🛡️ Community Shield</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item" data-timeline>
+            <div class="timeline-year">2017-18</div>
+            <div class="timeline-content">
+                <div class="timeline-trophies">
+                    <span class="timeline-trophy">🏆 Premier League</span>
+                    <span class="timeline-trophy">🏆 EFL Cup</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-item" data-timeline>
+            <div class="timeline-year">2016-17</div>
+            <div class="timeline-content">
+                <div class="timeline-trophies">
+                    <span style="opacity: 0.5;">Building the foundation...</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>PEP GUARDIOLA • MANCHESTER CITY FC • 2016 - PRESENT</p>
+        <p style="margin-top: 0.5rem;">The most successful period in the club's history</p>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const trophyObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 150);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all trophy cards
+        document.querySelectorAll('[data-trophy]').forEach(card => {
+            trophyObserver.observe(card);
+        });
+
+        // Observe manager showcase
+        const managerShowcase = document.querySelector('[data-manager]');
+        if (managerShowcase) {
+            trophyObserver.observe(managerShowcase);
+        }
+
+        // Observe all player cards
+        document.querySelectorAll('[data-player]').forEach((card, index) => {
+            const playerObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 100);
+                    }
+                });
+            }, observerOptions);
+            playerObserver.observe(card);
+        });
+
+        // Observe all timeline items
+        document.querySelectorAll('[data-timeline]').forEach(item => {
+            timelineObserver.observe(item);
+        });
+
+        // Parallax effect on scroll
+        let ticking = false;
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+                    const parallaxElements = document.querySelectorAll('.parallax');
+                    
+                    parallaxElements.forEach(el => {
+                        const speed = el.dataset.speed || 0.5;
+                        el.style.transform = `translateY(${scrolled * speed}px)`;
+                    });
+                    
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // Smooth scroll for scroll indicator
+        document.querySelector('.scroll-indicator')?.addEventListener('click', () => {
+            document.querySelector('.trophies-section').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        });
+
+        // Dynamic trophy counter animation on load
+        window.addEventListener('load', () => {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                let current = 0;
+                const increment = target / 50;
+                const duration = 2000;
+                const stepTime = duration / 50;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        stat.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(current);
+                    }
+                }, stepTime);
+            });
+        });
+    </script>
+</body>
+</html>
