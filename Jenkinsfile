@@ -24,8 +24,8 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'dockerhub-creds') {
-                        sh 'docker tag mancity-trophies sangsana/Puli:latest'
-                        sh 'docker push sangsana/Puli:latest'                                          // some block
+                        sh 'docker tag mancity-trophies sangsana/puli:latest'
+                        sh 'docker push sangsana/puli:latest'                                          // some block
                     }
                 }
             }    
