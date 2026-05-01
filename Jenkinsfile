@@ -23,13 +23,12 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                        sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
-                        sh 'docker tag mancity-trophies $DOCKER_USER/mancity-trophies:latest'
-                        sh 'docker push $DOCKER_USER/mancity-trophies:latest'
+                    withDockerRegistry(credentialsId: 'dockerhub-creds') {
+                        sh 'docker tag mancity-trophies sangsana/Puli:latest'
+                        sh 'docker push sangsana/Puli:latest'                                          // some block
                     }
-                }    
-            }
+                }
+            }    
         }
     }
 }
